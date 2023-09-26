@@ -4,3 +4,4 @@ node_modules/
 *.log
 .idea/
 .idea/*
+playground/server-app/.env
