@@ -96,62 +96,8 @@ import { AffinidiLoginButton, useAffinidiProfile } from 'affinidi-react-auth'
 
     {error && <><h2>error</h2>{error}</>}
 ```
-7. Sample `App.js` looks like below
-```
-import React from "react";
-import logo from './logo.svg';
-import './App.css';
+7. Sample `App.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client/src/App.js)
 
-import { AffinidiLoginButton, useAffinidiProfile } from 'affinidi-react-auth'
-
-function App() {
-
-  const { isLoading, error, profile, handleLogout } = useAffinidiProfile()
-
-  async function logout() {
-    //clear session cookie
-    handleLogout();
-    window.location.href = "/";
-  }
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        {!profile && <>
-          <AffinidiLoginButton />
-        </>}
-
-        {isLoading && <p>Loading...</p>}
-
-        {profile && <>
-          <button style={{ marginRight: 10 }} onClick={logout}>
-            Logout
-          </button>
-
-          <h3>User Profile</h3>
-          <pre style={{ textAlign: "left" }}>{JSON.stringify(profile, null, 4)}</pre>
-        </>}
-
-        {error && <><h2>error</h2>{error}</>}
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-
-```
 8. Run the application again using `npm start`, this time you should see the Affinidi Login button. we are going to create backend in next steps 
 
 ## Create Express Server 
@@ -230,40 +176,8 @@ const affinidiProvider = require('passport-affinidi')
       redirect_uris: ['http://localhost:3000/auth/callback']
   });
 ```
-Below is sample `index.js` looks like 
-```
-var express = require('express');
-require('dotenv').config()
-const affinidiProvider = require('passport-affinidi')
+  Sample `index.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server/index.js)
 
-var app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-const PORT = process.env.PORT || 3001;
-
-const initializeServer = async () => {
-
-    app.get('/', function (req, res, next) {
-        res.json({ success: 'Express' });
-    });
-
-    await affinidiProvider(app, {
-        id: "affinidi",
-        issuer: process.env.AFFINIDI_ISSUER,
-        client_id: process.env.AFFINIDI_CLIENT_ID,
-        client_secret: process.env.AFFINIDI_CLIENT_SECRET,
-        redirect_uris: ['http://localhost:3000/auth/callback']
-    });
-    
-    app.listen(PORT, () => {
-        console.log(`Server listening on ${PORT}`);
-    });
-
-}
-
-initializeServer();
-```
 4. Create file `.env` with below keys 
 ```
 AFFINIDI_CLIENT_ID=""

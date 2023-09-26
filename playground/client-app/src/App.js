@@ -1,11 +1,10 @@
-import React from "react";
 import logo from './logo.svg';
 import './App.css';
+import React from "react";
 
 import { AffinidiLoginButton, useAffinidiProfile } from 'affinidi-react-auth'
 
 function App() {
-
   const { isLoading, error, profile, handleLogout } = useAffinidiProfile()
 
   async function logout() {
@@ -18,7 +17,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-
         {!profile && <>
           <AffinidiLoginButton />
         </>}
@@ -36,6 +34,9 @@ function App() {
 
         {error && <><h2>error</h2>{error}</>}
 
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
