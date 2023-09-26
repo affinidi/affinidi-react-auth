@@ -16,6 +16,10 @@
     "build": "npm run clean && tsc",
     "watch": "tsc -w"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamarthiparamesh/affinidi-react-auth.git"
+  },
   "keywords": [
     "react-component",
     "affinidi-login",

@@ -67,34 +67,34 @@ import { AffinidiLoginButton, useAffinidiProfile } from 'affinidi-react-auth'
 5. Add below code to use affinidi's hook to get the profile information once login flow is completed
 
 ```
-  const { isLoading, error, profile, handleLogout } = useAffinidiProfile()
+const { isLoading, error, profile, handleLogout } = useAffinidiProfile()
 
-  async function logout() {
+async function logout() {
     //clear session cookie
     handleLogout();
     window.location.href = "/";
-  }
+}
 ```
 
 6. Add below code in JSX to display Affinidi Login button, error, profile etc..
 
 ```
-    {!profile && <>
-        <AffinidiLoginButton />
-    </>}
+{!profile && <>
+    <AffinidiLoginButton />
+</>}
 
-    {isLoading && <p>Loading...</p>}
+{isLoading && <p>Loading...</p>}
 
-    {profile && <>
-        <button style={{ marginRight: 10 }} onClick={logout}>
-        Logout
-        </button>
+{profile && <>
+    <button style={{ marginRight: 10 }} onClick={logout}>
+    Logout
+    </button>
 
-        <h3>User Profile</h3>
-        <pre style={{ textAlign: "left" }}>{JSON.stringify(profile, null, 4)}</pre>
-    </>}
+    <h3>User Profile</h3>
+    <pre style={{ textAlign: "left" }}>{JSON.stringify(profile, null, 4)}</pre>
+</>}
 
-    {error && <><h2>error</h2>{error}</>}
+{error && <><h2>error</h2>{error}</>}
 ```
 7. Sample `App.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client/src/App.js)
 
@@ -158,7 +158,7 @@ Note: Backend server will be running on http://localhost:3001/
 
 Now follow the below steps to add Affinidi OAuth2.0 to complete the Code Grant flow.
 
-1. Install the Affinidi package `passport-affinidi`
+1. Install the Affinidi package `passport-affinidi`, link [here](https://www.npmjs.com/package/passport-affinidi)
 ```
 npm i passport-affinidi
 ```
@@ -168,13 +168,13 @@ const affinidiProvider = require('passport-affinidi')
 ```
 3. Initialize provider with settings
 ```
-  await affinidiProvider(app, {
-      id: "affinidi",
-      issuer: process.env.AFFINIDI_ISSUER,
-      client_id: process.env.AFFINIDI_CLIENT_ID,
-      client_secret: process.env.AFFINIDI_CLIENT_SECRET,
-      redirect_uris: ['http://localhost:3000/auth/callback']
-  });
+await affinidiProvider(app, {
+    id: "affinidi",
+    issuer: process.env.AFFINIDI_ISSUER,
+    client_id: process.env.AFFINIDI_CLIENT_ID,
+    client_secret: process.env.AFFINIDI_CLIENT_SECRET,
+    redirect_uris: ['http://localhost:3000/auth/callback']
+});
 ```
   Sample `index.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server/index.js)
 
