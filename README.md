@@ -10,7 +10,7 @@ Please go through the below steps to install Affinidi tools
 2. Install Affinidi CLI tool from the [here](https://dev.docs.affinidi.com/dev-tools/affinidi-cli/)
 
 ## Applications folder structure
-Below the folder structure we are going to create, where our entire code resides
+Below is the folder structure we are going to create, where our entire code resides
 `affinidi-apps` is main root folder, `client-app` is frontend react app and `server-app` is our backend API.
 ```
 - affinidi-apps
@@ -55,7 +55,7 @@ npm i affinidi-react-auth
 ```
  "proxy": "http://localhost:3001",
 ```
-
+Sample package.json can be found [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client-app/package.json) 
 3. Open the Landing React Page which is under `\src\App.js`
 4. Add below import statements
 
@@ -96,7 +96,7 @@ async function logout() {
 
 {error && <><h2>error</h2>{error}</>}
 ```
-7. Sample `App.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client/src/App.js)
+7. Sample `App.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client-app/src/App.js)
 
 8. Run the application again using `npm start`, this time you should see the Affinidi Login button. we are going to create backend in next steps 
 
@@ -176,7 +176,7 @@ await affinidiProvider(app, {
     redirect_uris: ['http://localhost:3000/auth/callback']
 });
 ```
-  Sample `index.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server/index.js)
+  Sample `index.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server-app/index.js)
 
 4. Create file `.env` with below keys 
 ```
@@ -240,7 +240,7 @@ npm start
 
 ## Update Login Configuration to get profile information
 The login configuration created in previous step uses default PEX query which requests only `Email` data, Now we modify the PEX query to request `Email` and `User Profile` data
-1. Create a file `profile-pex.json` with contents from file [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server/profile-pex.json)
+1. Create a file `profile-pex.json` with contents from file [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server-app/profile-pex.json)
 2. Execute the below command to update the login configuration by replacing `LOGIN_CONFIG_ID` with value obtained from previous step
  
 ```
