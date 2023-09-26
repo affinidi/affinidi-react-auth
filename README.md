@@ -1,0 +1,1 @@
+# Affinidi React Auth Plugin

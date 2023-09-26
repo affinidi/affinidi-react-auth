@@ -1,0 +1,44 @@
+{
+  "name": "affinidi-react-auth",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Paramesh Kamarthi <paramesh.l@affinidi.com>",
+  "description": "Affinidi react auth library for creating Affinidi Login Button",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "/lib"
+  ],
+  "scripts": {
+    "test": "jest",
+    "prepare": "npm run build",
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && tsc",
+    "watch": "tsc -w"
+  },
+  "keywords": [
+    "react-component",
+    "affinidi-login",
+    "react"
+  ],
+  "dependencies": {
+    "react": ">=17",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "styled-components": "^6.0.8",
+    "tslib": "^2.3.1",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.22"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  }
+}
