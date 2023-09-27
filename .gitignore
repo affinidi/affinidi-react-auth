@@ -5,3 +5,4 @@ node_modules/
 .idea/
 .idea/*
 playground/server-app/.env
+playground/**/*-lock.json
