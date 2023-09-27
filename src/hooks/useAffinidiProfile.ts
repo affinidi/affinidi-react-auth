@@ -12,7 +12,11 @@ const setStorgageData = (data: any) => {
 const clearStorgageData = () => {
   window.localStorage.removeItem(storageKey)
 }
-const useAffinidiProfile = ({redirectTo = '/'} = {}) => {
+
+const useAffinidiProfile = ({
+  redirectTo = '/',
+  authCompleteUrl = '/api/affinidi-auth/complete'
+} = {}) => {
   const [isLoading, setIsLoading] = useState(false)
   const [code, setCode] = useState<string | undefined>(undefined)
   const [state, setState] = useState<string | null>(null)
@@ -37,7 +41,7 @@ const useAffinidiProfile = ({redirectTo = '/'} = {}) => {
 
     const getProfile = async ({code, state}: {code: string; state: string | null | undefined}) => {
       setIsLoading(true)
-      const res = await fetch(`/api/affinidi-auth/complete`, {
+      const res = await fetch(authCompleteUrl, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json'

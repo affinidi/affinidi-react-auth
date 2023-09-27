@@ -1,31 +1,31 @@
-import { useState } from "react";
+import {useState} from 'react'
 
-const useAffinidiLogin = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const useAffinidiLogin = ({authInitUrl = '/api/affinidi-auth/init'} = {}) => {
+  const [isLoading, setIsLoading] = useState(false)
 
   async function getAuthUrl() {
     try {
-      setIsLoading(true);
-      const res = await fetch(`/api/affinidi-auth/init`, {
-        method: "get",
+      setIsLoading(true)
+      const res = await fetch(authInitUrl, {
+        method: 'get',
         headers: {
-          "Content-Type": "application/json",
-        },
-      });
+          'Content-Type': 'application/json'
+        }
+      })
 
-      const data = await res.json();
-      return data;
+      const data = await res.json()
+      return data
     } catch (error) {
-      throw error;
+      throw error
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
   return {
     getAuthUrl,
-    isLoading,
-  };
-};
+    isLoading
+  }
+}
 
-export default useAffinidiLogin;
+export default useAffinidiLogin

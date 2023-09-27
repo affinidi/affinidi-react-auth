@@ -26,6 +26,8 @@
     "react"
   ],
   "dependencies": {
+    "@affinidi/client-aiv-extension": "^1.6.1",
+    "nanoid": "^5.0.1",
     "react": ">=17",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

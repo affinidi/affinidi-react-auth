@@ -56,6 +56,7 @@ npm i affinidi-react-auth
  "proxy": "http://localhost:3001",
 ```
 Sample package.json can be found [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client-app/package.json) 
+
 3. Open the Landing React Page which is under `\src\App.js`
 4. Add below import statements
 
