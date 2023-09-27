@@ -1,5 +1,5 @@
 import {useExtension} from './useExtension'
-import {nanoid} from 'nanoid'
+import randomstring from 'randomstring'
 
 export type VaultRequestType = {
   presentationDefinition?: any
@@ -21,8 +21,8 @@ export default function useInitiateRequest({
     }
 
     client.initiateAuth({
-      nonce: nanoid(),
-      state: nanoid(),
+      nonce: randomstring.generate(),
+      state: randomstring.generate(),
       responseDestination: {
         responseMode: 'query',
         redirectUri: `${callbackUrl}`
