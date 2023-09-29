@@ -1,71 +1,72 @@
 # Affinidi React Auth Plugin
 
-This plugin helps to integrate Affinidi Login into your React Application
+Simplify the integration of `Affinidi Login` into your React Application with this plugin.
 
-## Prerequistes
+## Prerequisites
 
-Please go through the below steps to install Affinidi tools
-1. Install Affinidi Vault from [here](https://dev.docs.affinidi.com/labs/affinidi-login-nextjs/#before-you-begin-i-classfa-solid-fa-stari)
+Before getting started, make sure you have the following prerequisites:
 
-2. Install Affinidi CLI tool from the [here](https://dev.docs.affinidi.com/dev-tools/affinidi-cli/)
+1. Install [Affinidi Vault](https://docs.affinidi.com/labs/affinidi-login-basic/#before-you-begin-i-classfa-solid-fa-stari) to discover, collect, store, share, and monetise your data with consent.
 
-## Applications folder structure
-Below is the folder structure we are going to create, where our entire code resides
-`affinidi-apps` is main root folder, `client-app` is frontend react app and `server-app` is our backend API.
+2. Install the [Affinidi CLI](https://docs.affinidi.com/dev-tools/affinidi-cli/) tool to interact with Affinidi services for managing projects, login configurations, user groups etc...
+
+## Application Folder Structure
+Let's start by creating a folder structure for your project. Here's an example of the directory structure:
 ```
 - affinidi-apps
     - client-app
     - server-app
 ```
+- *affinidi-apps*: The root folder for your project.
+- *client-app*: A frontend React application.
+- *server-app*: The backend API for your application.
 
-## Create React Application
+## Create a React Application
 
-1. Create a sample react app with name `client-app` using `create-react-app` command
+1. Create a new React app named `client-app `using the following command:
 
 ```
 npx create-react-app client-app
 ```
 
-2. Change the directory to `client-app` and open the project in VS Code
+2. Change to the `client-app` directory and open the project in your preferred code editor:
 
 ```
 cd client-app
 ```
 
-3. Start the app by executing the below command to see the application is working
+3. Start the application to ensure it's working correctly:
 
 ```
 npm start
 ```
-
-Note: Application will be running on http://localhost:3000/
+Note: Your application will be available at http://localhost:3000/.
 
 ## Integrate Affinidi Login
 
-Now follow the below steps to integrate `Affinidi Login` to your application using affinidi packages.
+Now, let's integrate `Affinidi Login` into your React application using the following steps:
 
-1. Install the affinidi npm package `affinidi-react-auth`
+1. Install the `affinidi-react-auth` npm package:
 
 ```
-npm i affinidi-react-auth
+npm install affinidi-react-auth
 ```
 
-2. To tell the development server to proxy any unknown requests to your API server in development, add a proxy field to your `package.json`, for example:
+2. To proxy unknown requests to your API server during development, add a `proxy` field to your `package.json` like this:
 
 ```
  "proxy": "http://localhost:3001",
 ```
-Sample package.json can be found [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client-app/package.json) 
+You can find a sample `package.json` [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client-app/package.json).
 
-3. Open the Landing React Page which is under `\src\App.js`
-4. Add below import statements
+3. In your `src/App.js` file, import the necessary components and hooks:
 
 ```
 import React from "react";
 import { AffinidiLoginButton, useAffinidiProfile } from 'affinidi-react-auth'
 ```
 
-5. Add below code to use affinidi's hook to get the profile information once login flow is completed
+4. Use the `useAffinidiProfile` hook to retrieve profile information once the login flow is completed:
 
 ```
 const { isLoading, error, profile, handleLogout } = useAffinidiProfile()
@@ -77,7 +78,7 @@ async function logout() {
 }
 ```
 
-6. Add below code in JSX to display Affinidi Login button, error, profile etc..
+5. Add the following JSX code to display the Affinidi Login button, loading indicator, user profile, and error messages:
 
 ```
 {!profile && <>
@@ -97,28 +98,30 @@ async function logout() {
 
 {error && <><h2>error</h2>{error}</>}
 ```
-7. Sample `App.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client-app/src/App.js)
+You can find a sample `App.js` [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/client-app/src/App.js).
 
-8. Run the application again using `npm start`, this time you should see the Affinidi Login button. we are going to create backend in next steps 
+6. Restart your application using `npm start`. This time, you should see the Affinidi Login button.
 
-## Create Express Server 
+## Create an Express Server
 
-Now follow the below steps to create basic express server application
+Now, let's create a basic Express server for your backend API:
 
-1. Create a folder `server-app` and change to that directory
+1. Create a folder named `server-app` and navigate to it:
 ```
 mkdir server-app
 cd server-app
 ```
-2. Init the project by creating a package.json file using below npm command
+2. Initialize the project by creating a `package.json` file:
 ```
 npm init -y
 ```
-3. Install the packages like express (for creating a server), dotenv(for creating environment variables from .env file) and nodemon(for automatic re-running)
+You can find a sample package.json [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server-app/package.json).
+
+3. Install the required packages: `express` for creating the server, `dotenv` for managing environment variables, and `nodemon` for automatic reloading:
 ```
 npm install express dotenv nodemon
 ```
-4. Create a file with name `index.js` and add below basic express server setup
+4. Create an `index.js` file and set up a basic Express server:
 ```
 var express = require('express');
 require('dotenv').config()
@@ -144,30 +147,30 @@ const initializeServer = async () => {
 initializeServer();
 
 ```
-6. Add npm start command script in `package.json`
+5. Add the following script to your `package.json` to start the server with nodemon:
 ```
 "start": "nodemon index.js"
 ```
-7. Start the application using below command
+6. Start the server using the following command:
 ```
 npm start
 ```
-Note: Backend server will be running on http://localhost:3001/
+Your backend server will run on http://localhost:3001/.
 
 
-## Add Affinidi Provider to the Express Server 
+## Add Affinidi Provider to the Express Server
 
-Now follow the below steps to add Affinidi OAuth2.0 to complete the Code Grant flow.
+To complete the OAuth 2.0 Code Grant flow with Affinidi, follow these steps:
 
-1. Install the Affinidi package `passport-affinidi`, link [here](https://www.npmjs.com/package/passport-affinidi)
+1. Install the [passport-affinidi](https://www.npmjs.com/package/passport-affinidi) package:
 ```
-npm i passport-affinidi
+npm install passport-affinidi
 ```
-2. Open `index.js` and import the package
+2. In your `index.js` file (inside the server-app folder), import the `passport-affinidi` package:
 ```
 const affinidiProvider = require('passport-affinidi')
 ```
-3. Initialize provider with settings
+3. Initialize the Affinidi provider with your configuration settings
 ```
 await affinidiProvider(app, {
     id: "affinidi",
@@ -177,19 +180,12 @@ await affinidiProvider(app, {
     redirect_uris: ['http://localhost:3000/auth/callback']
 });
 ```
-  Sample `index.js` looks like [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server-app/index.js)
 
-4. Create file `.env` with below keys 
-```
-AFFINIDI_CLIENT_ID=""
-AFFINIDI_CLIENT_SECRET=""
-AFFINIDI_ISSUER=""
-``` 
-5. Create Login configuration using the [link](https://dev.docs.affinidi.com/docs/affinidi-login/login-configuration/#create-a-login-configuration) 
+You can find a sample index.js file [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server-app/index.js).
 
-6. You can specify name as `Affinidi Login App` and redirect-uri as `http://localhost:3000/auth/callback` while creating login configuration
+4. Create Login configuration using the link [here](https://docs.affinidi.com/docs/affinidi-login/login-configuration/#create-a-login-configuration) by giving name as `Affinidi Login App` and redirect-uri as `http://localhost:3000/auth/callback`
 
-    Sample Command
+    Sample CLI Command 
     ```
     affinidi login create-config --name='Affinidi Login App' --redirect-uris='http://localhost:3000/auth/callback'
     ```
@@ -220,29 +216,33 @@ AFFINIDI_ISSUER=""
 
     ```
 
-    **Important**: Keep the Client ID and Client Secret safe that will be used later for setting up your IdP or your OIDC-compliant applications. Client Secret will only be available once.
-7. Open `.env` file and update the respective values of the `CLIENT_ID`, `CLIENT_SECRET` and `ISSUER`. Sample values are shown below 
+    **Important**: Keep the CLIENT_ID and CLIENT_SECRET safe that will be used later next step. Client Secret will only be displayed once.
+    
+5. Create a `.env` file in the `server-app` folder and add your Affinidi configuration obtained from previous step:
+```
+AFFINIDI_CLIENT_ID="<CLIENT_ID>"
+AFFINIDI_CLIENT_SECRET="<CLIENT_SECRET>"
+AFFINIDI_ISSUER="<ISSUER>"
+``` 
+Sample `.env` file displayed below after respective values of the `CLIENT_ID`, `CLIENT_SECRET` and `ISSUER`
 ```
 AFFINIDI_CLIENT_ID="13456678c-67ac-429a-b0d3-5c64ec4c0577"
 AFFINIDI_CLIENT_SECRET="AbcdeF-odZtJ9tc3oLuWVW.ECE_"
 AFFINIDI_ISSUER="https://apse1.api.affinidi.io/vpa/v1/login/project/d085c5a5-5765-4d8f-b00e-398f0916a161"
 ```
-5. Start the server using below command
-```
-npm start
-```
+6. Restart your server using `npm start`.
 
-## Test the application
+## Testing the Application
 
-1. Open the URL http://localhost:3000/ and check frontend application is running, if its not running then open the terminal to `client-app` folder and run `npm start` command
-2. Open the URL http://localhost:3001/ and check backend is running, if its not running then open the terminal to `server-app` folder and run `npm start` command
-3. Now click on Affinidi Login button in frontend app and see the magic
+1. Open http://localhost:3000/ in your browser to check if the frontend application is running. If it's not running, go to the `client-app` folder in your terminal and run `npm start`.
+2. Open http://localhost:3001/ in your browser to check if the backend server is running. If it's not running, go to the `server-app` folder in your terminal and run `npm start`.
+3. Click the `Affinidi Login` button in the frontend app to start the login flow.
 
 
-## Update Login Configuration to get profile information
-The login configuration created in previous step uses default PEX query which requests only `Email` data, Now we modify the PEX query to request `Email` and `User Profile` data
-1. Create a file `profile-pex.json` with contents from file [here](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server-app/profile-pex.json)
-2. Execute the below command to update the login configuration by replacing `LOGIN_CONFIG_ID` with value obtained from previous step
+## Update Login Configuration to Retrieve Profile Information
+By default, the login configuration requests only `Email` data. To also retrieve the `User Profile` data, follow these steps:
+1. Create a file named `profile-pex.json` under `server-app` folder with the contents from [this file](https://github.com/kamarthiparamesh/affinidi-react-auth/blob/main/playground/server-app/profile-pex.json) and open terminal
+2. Execute the following command to update the login configuration, replacing `LOGIN_CONFIG_ID` with the value obtained in a previous step:
  
 ```
 affinidi login update-config --id=LOGIN_CONFIG_ID --file=./profile-pex.json
@@ -251,6 +251,15 @@ Sample Command
 ```
 affinidi login update-config --id=384192b3b3ea3df8cece307fda64cf98 --file=./profile-pex.json
 ```
+Ensure that you have replaced `LOGIN_CONFIG_ID` with the actual ID from your configuration.
 
+## Testing the Application with User Profile
 
+Now that your login configuration is set up to request both `Email` and `User Profile` data, you can test the login flow to obtain profile information. Here are the steps:
+
+1. Update your profile information in your Affinidi Vault.
+2. Open the frontend application by navigating to http://localhost:3000/ in your web browser.
+3. If you are already logged in, click on the Logout button to log out from the application. 
+4. Now, click the `Affinidi Login` button again to initiate the login flow.
+5. This time, you will receive user profile information as part of the login response.
 
