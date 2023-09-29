@@ -1,6 +1,6 @@
 {
   "name": "affinidi-react-auth",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "license": "MIT",
   "author": "Paramesh Kamarthi <paramesh.k@affinidi.com>",
   "description": "Affinidi react auth library for creating Affinidi Login Button",
