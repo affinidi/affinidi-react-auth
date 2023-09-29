@@ -23,7 +23,8 @@
   "keywords": [
     "react-component",
     "affinidi-login",
-    "react"
+    "react",
+    "passport-affinidi"
   ],
   "dependencies": {
     "@affinidi/client-aiv-extension": "^1.6.1",
