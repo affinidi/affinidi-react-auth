@@ -14,7 +14,7 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "outDir": "./lib",
+    "outDir": "dist",
     "lib": ["es2020", "dom"],
     "jsx": "react"
   }
