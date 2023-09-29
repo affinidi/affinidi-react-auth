@@ -4,10 +4,10 @@
   "license": "MIT",
   "author": "Paramesh Kamarthi <paramesh.l@affinidi.com>",
   "description": "Affinidi react auth library for creating Affinidi Login Button",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "/lib"
+    "/dist"
   ],
   "scripts": {
     "test": "jest",
@@ -29,7 +29,7 @@
     "@affinidi/client-aiv-extension": "^1.6.1",
     "nanoid": "^5.0.1",
     "randomstring": "^1.3.0",
-    "react": ">=17",
+    "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.0.8",
     "tslib": "^2.3.1",
@@ -49,6 +49,6 @@
     "react": ">=17"
   },
   "directories": {
-    "lib": "lib"
+    "lib": "dist"
   }
 }
