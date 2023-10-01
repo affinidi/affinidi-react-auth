@@ -1,5 +1,5 @@
-import {useExtension} from './useExtension'
 import randomstring from 'randomstring'
+import { useExtension } from './useExtension'
 
 export type VaultRequestType = {
   presentationDefinition?: any
@@ -8,11 +8,8 @@ export type VaultRequestType = {
   useVerifyVpMutation?: Function
 }
 
-export default function useInitiateRequest({
-  presentationDefinition,
-  callbackUrl
-}: VaultRequestType) {
-  const {isInitializing, isExtensionInstalled, client} = useExtension()
+export default function useInitiateRequest({ presentationDefinition, callbackUrl }: VaultRequestType) {
+  const { isInitializing, isExtensionInstalled, client } = useExtension()
 
   async function handleInitiate() {
     if (!isExtensionInstalled) {
@@ -25,15 +22,15 @@ export default function useInitiateRequest({
       state: randomstring.generate(),
       responseDestination: {
         responseMode: 'query',
-        redirectUri: `${callbackUrl}`
+        redirectUri: `${callbackUrl}`,
       },
-      presentationDefinition
+      presentationDefinition,
     })
   }
 
   return {
     isInitializing,
     isExtensionInstalled,
-    handleInitiate
+    handleInitiate,
   }
 }

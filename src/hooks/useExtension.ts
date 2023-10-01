@@ -15,7 +15,7 @@ export function useExtension() {
 
     init()
   }, [])
-  
+
   return {
     client,
     isInitializing,

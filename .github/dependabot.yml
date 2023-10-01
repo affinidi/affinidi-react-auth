@@ -1,7 +1,8 @@
 version: 2
 updates:
-  - package-ecosystem: npm
-    versioning-strategy: lockfile-only
-    directory: /
+  - package-ecosystem: "npm"
+    directory: "/" # Location of package manifests
     schedule:
-      interval: daily
+      interval: "daily"
+    commit-message:
+      prefix: "build"

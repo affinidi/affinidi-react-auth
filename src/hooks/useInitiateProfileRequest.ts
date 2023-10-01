@@ -1,7 +1,7 @@
-import {presentationDefinitions} from '../utils/presentation-definitions'
-import useInitiateRequest, {VaultRequestType} from './useInitiateRequest'
+import { useEffect, useState } from 'react'
 import useCompleteRequest from './useCompleteRequest'
-import {useEffect, useState} from 'react'
+import useInitiateRequest, { VaultRequestType } from './useInitiateRequest'
+import { presentationDefinitions } from '../utils/presentation-definitions'
 
 type ProfileTypeProps = {
   email: string
@@ -21,7 +21,7 @@ type ProfileTypeProps = {
 export default function useInitiateProfileRequest({
   callbackUrl,
   doVerification,
-  useVerifyVpMutation
+  useVerifyVpMutation,
 }: VaultRequestType) {
   const [data, setData] = useState<ProfileTypeProps>()
 
@@ -30,29 +30,26 @@ export default function useInitiateProfileRequest({
     presentationDefinition: presentationDefinitions.emailAndProfileVC,
     callbackUrl,
     doVerification,
-    useVerifyVpMutation
+    useVerifyVpMutation,
   }
 
   //Initalizing request
-  const {isInitializing, isExtensionInstalled, handleInitiate} = useInitiateRequest(vaultRequest)
+  const { isInitializing, isExtensionInstalled, handleInitiate } = useInitiateRequest(vaultRequest)
 
   //Completing the request
-  const {vpToken, error, errorDescription, isLoading, isCompliant} =
-    useCompleteRequest(vaultRequest)
+  const { vpToken, error, errorDescription, isLoading, isCompliant } = useCompleteRequest(vaultRequest)
 
   useEffect(() => {
     if (vpToken && !isLoading && isCompliant) {
       //received vp token and its valid
       const emailVC = vpToken.verifiableCredential.find((vc: any) => vc.type.indexOf('Email') > -1)
-      const profileVC = vpToken.verifiableCredential.find(
-        (vc: any) => vc.type.indexOf('UserProfile') > -1
-      )
+      const profileVC = vpToken.verifiableCredential.find((vc: any) => vc.type.indexOf('UserProfile') > -1)
 
       if (emailVC) {
         const credentialSubject = Array.isArray(emailVC.credentialSubject)
           ? emailVC.credentialSubject[0]
           : emailVC.credentialSubject
-        setData(state => ({...state, ...credentialSubject}))
+        setData((state) => ({ ...state, ...credentialSubject }))
       }
 
       if (profileVC) {
@@ -60,9 +57,9 @@ export default function useInitiateProfileRequest({
           ? profileVC.credentialSubject[0]
           : profileVC.credentialSubject
         //set name, address etc.. from profile VC
-        setData(state => ({
+        setData((state) => ({
           ...state,
-          ...credentialSubject
+          ...credentialSubject,
         }))
       }
     }
@@ -75,6 +72,6 @@ export default function useInitiateProfileRequest({
     isLoading: vpToken && isLoading,
     error,
     errorDescription,
-    profileData: data
+    profileData: data,
   }
 }
