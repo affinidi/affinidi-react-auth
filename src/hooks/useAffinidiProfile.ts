@@ -58,7 +58,6 @@ const useAffinidiProfile = ({
         setStorgageData({profile: response.user})
       }
       setIsLoading(false)
-      console.log(response)
       window.location.href = redirectTo
     }
 
