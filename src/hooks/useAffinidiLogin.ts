@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
-const useAffinidiLogin = ({authInitUrl = '/api/affinidi-auth/init'} = {}) => {
+const useAffinidiLogin = ({ authInitUrl = '/api/affinidi-auth/init' } = {}) => {
   const [isLoading, setIsLoading] = useState(false)
 
   async function getAuthUrl() {
@@ -9,14 +9,12 @@ const useAffinidiLogin = ({authInitUrl = '/api/affinidi-auth/init'} = {}) => {
       const res = await fetch(authInitUrl, {
         method: 'get',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       })
 
       const data = await res.json()
       return data
-    } catch (error) {
-      throw error
     } finally {
       setIsLoading(false)
     }
@@ -24,7 +22,7 @@ const useAffinidiLogin = ({authInitUrl = '/api/affinidi-auth/init'} = {}) => {
 
   return {
     getAuthUrl,
-    isLoading
+    isLoading,
   }
 }
 

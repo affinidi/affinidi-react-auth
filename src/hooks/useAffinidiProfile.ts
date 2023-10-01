@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 const storageKey = 'affinidi-login'
 
 const getStorgageData = () => {
@@ -13,10 +13,7 @@ const clearStorgageData = () => {
   window.localStorage.removeItem(storageKey)
 }
 
-const useAffinidiProfile = ({
-  redirectTo = '/',
-  authCompleteUrl = '/api/affinidi-auth/complete'
-} = {}) => {
+const useAffinidiProfile = ({ redirectTo = '/', authCompleteUrl = '/api/affinidi-auth/complete' } = {}) => {
   const [isLoading, setIsLoading] = useState(false)
   const [code, setCode] = useState<string | undefined>(undefined)
   const [state, setState] = useState<string | null>(null)
@@ -24,13 +21,13 @@ const useAffinidiProfile = ({
   useEffect(() => {
     const urlObject = new URL(window.location.href)
     const params = new URLSearchParams(urlObject.search)
-    const code = params.get('code')
-    const error = params.get('error')
-    if (code) {
-      setCode(code)
+    const pCode = params.get('code')
+    const perror = params.get('error')
+    if (pCode) {
+      setCode(pCode)
       setState(params.get('state'))
-    } else if (error) {
-      setStorgageData({error: `${(error as any).message}`})
+    } else if (perror) {
+      setStorgageData({ error: `${(perror as any).message}` })
     }
   }, [])
 
@@ -39,29 +36,30 @@ const useAffinidiProfile = ({
       return
     }
 
-    const getProfile = async ({code, state}: {code: string; state: string | null | undefined}) => {
+    const getProfile = async (params: { code: string; state: string | null }) => {
       setIsLoading(true)
       const res = await fetch(authCompleteUrl, {
         method: 'post',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({code, state})
+        body: JSON.stringify(params),
       })
 
       const response = await res.json()
       if (response.error) {
         setStorgageData({
-          error: `${response.error}-${response.error_description}`
+          error: `${response.error}-${response.error_description}`,
         })
       } else {
-        setStorgageData({profile: response.user})
+        setStorgageData({ profile: response.user })
       }
       setIsLoading(false)
       window.location.href = redirectTo
     }
+    const params = { code, state }
 
-    getProfile({code, state})
+    getProfile(params)
   }, [code, state])
 
   async function handleLogout() {
@@ -71,7 +69,7 @@ const useAffinidiProfile = ({
   return {
     handleLogout,
     isLoading,
-    ...getStorgageData()
+    ...getStorgageData(),
   }
 }
 

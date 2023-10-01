@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 
-import { AffinidiLoginButton, useAffinidiProfile } from 'affinidi-react-auth'
+import { AffinidiLoginButton, useAffinidiProfile } from '@affinidi/affinidi-react-auth'
 
 function App() {
   const { isLoading, error, profile, handleLogout } = useAffinidiProfile()
