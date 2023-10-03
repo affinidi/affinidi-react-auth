@@ -18,6 +18,7 @@ const useAffinidiProfile = ({ redirectTo = '/', authCompleteUrl = '/api/affinidi
   const [isLoading, setIsLoading] = useState(false)
   const [code, setCode] = useState<string | undefined>(undefined)
   const [state, setState] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>()
 
   useEffect(() => {
     const urlObject = new URL(window.location.href)
@@ -29,11 +30,12 @@ const useAffinidiProfile = ({ redirectTo = '/', authCompleteUrl = '/api/affinidi
       setState(params.get('state'))
     } else if (perror) {
       const errorDescription = params.get('error_description') || ''
-      setStorgageData({
-        error: `${errorMessageMap[perror] || 'Unexpected error'} - ${
+      setError(
+        `${errorMessageMap[perror] || 'Unexpected error'} - ${
           (errorDescription && errorDescriptionMessageMap[errorDescription]) || undefined
         }`,
-      })
+      )
+      setStorgageData({ error })
     }
   }, [])
 
