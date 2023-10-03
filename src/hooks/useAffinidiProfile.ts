@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { errorDescriptionMessageMap, errorMessageMap } from '../types'
 const storageKey = 'affinidi-login'
 
 const getStorgageData = () => {
@@ -27,7 +28,12 @@ const useAffinidiProfile = ({ redirectTo = '/', authCompleteUrl = '/api/affinidi
       setCode(pCode)
       setState(params.get('state'))
     } else if (perror) {
-      setStorgageData({ error: `${(perror as any).message}` })
+      const errorDescription = params.get('error_description') || ''
+      setStorgageData({
+        error: `${errorMessageMap[perror] || 'Unexpected error'} - ${
+          (errorDescription && errorDescriptionMessageMap[errorDescription]) || undefined
+        }`,
+      })
     }
   }, [])
 
