@@ -168,7 +168,7 @@ npm install @affinidi/passport-affinidi
 ```
 2. In your `index.js` file (inside the server-app folder), import the `@affinidi/passport-affinidi` package:
 ```
-const affinidiProvider = require('@affinidi/passport-affinidi')
+const { affinidiProvider } = require('@affinidi/passport-affinidi')
 ```
 3. Initialize the Affinidi provider with your configuration settings
 ```
