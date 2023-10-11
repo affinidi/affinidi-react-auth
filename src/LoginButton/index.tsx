@@ -5,7 +5,7 @@ import useAffinidiLogin from "../hooks/useAffinidiLogin";
 
 const AffinidiLoginButton = (props: AffinidiLoginTypeProps) => {
 
-  const { isLoading, getAuthUrl } = useAffinidiLogin();
+  const { isLoading, getAuthUrl } = useAffinidiLogin({ authInitUrl: props.authInitUrl });
 
   async function logInHandler() {
     const data = await getAuthUrl();

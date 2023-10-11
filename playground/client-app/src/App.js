@@ -5,7 +5,9 @@ import React from "react";
 import { AffinidiLoginButton, useAffinidiProfile } from '@affinidi/affinidi-react-auth'
 
 function App() {
-  const { isLoading, error, profile, handleLogout } = useAffinidiProfile()
+  const { isLoading, error, profile, handleLogout } = useAffinidiProfile({
+     authCompleteUrl: '/api/affinidi-auth/complete'
+  })
 
   async function logout() {
     //clear session cookie

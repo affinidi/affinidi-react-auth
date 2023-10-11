@@ -5,6 +5,7 @@ export type AffinidiLoginTypeProps = {
   isLoading?: boolean
   containerStyles?: CSSProperties | undefined
   buttonStyles?: CSSProperties | undefined
+  authInitUrl?: string
 }
 
 export const errorMessageMap: Record<string, string> = {
