@@ -9,10 +9,10 @@ const AffinidiLoginButton = (props: AffinidiLoginTypeProps) => {
 
   async function logInHandler() {
     const data = await getAuthUrl();
-    window.location.href = data.authorizationUrl;
     if (props.onSuccess) {
       props.onSuccess()
     }
+    window.location.href = data.authorizationUrl;
   }
 
   return (
