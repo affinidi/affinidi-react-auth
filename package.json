@@ -1,6 +1,6 @@
 {
   "name": "@affinidi/affinidi-react-auth",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Affinidi react auth library for creating Affinidi Login Button",
   "author": "affinidi.com",
   "license": "MIT",
