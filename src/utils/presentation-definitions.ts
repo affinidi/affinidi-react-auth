@@ -1,417 +1,417 @@
 //PEX for requesting email type VC
 const emailVc = {
-  id: "vp_token_with_email_vc",
+  id: 'vp_token_with_email_vc',
   input_descriptors: [
     {
-      id: "email_vc",
-      name: "Email VC",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'email_vc',
+      name: 'Email VC',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "Email",
+                type: 'string',
+                pattern: 'Email',
               },
             },
           },
           {
-            path: ["$.credentialSubject.email"],
-            purpose: "Check if VC contains email field",
+            path: ['$.credentialSubject.email'],
+            purpose: 'Check if VC contains email field',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
           {
-            path: ["$.issuer"],
-            purpose: "Check if VC Issuer is Trusted",
+            path: ['$.issuer'],
+            purpose: 'Check if VC Issuer is Trusted',
             filter: {
-              type: "string",
+              type: 'string',
               pattern:
-                "^did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N|^did:elem:EiBb5gyC1mu3t31oYwMsYWg1U2HyNtaVQ0NKn5UkAzB8BQ",
+                '^did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N|^did:elem:EiBb5gyC1mu3t31oYwMsYWg1U2HyNtaVQ0NKn5UkAzB8BQ',
             },
           },
         ],
       },
     },
   ],
-};
+}
 
 //PEX for requesting both Email and IndividualProfile
 const emailAndHITProfileVC = {
-  id: "vp_combined_email_user_profile_combined",
+  id: 'vp_combined_email_user_profile_combined',
   submission_requirements: [
     {
-      rule: "pick",
+      rule: 'pick',
       min: 1,
-      from: "A",
+      from: 'A',
     },
   ],
   input_descriptors: [
     {
-      id: "email_vc",
-      name: "Email VC",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'email_vc',
+      name: 'Email VC',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "Email",
+                type: 'string',
+                pattern: 'Email',
               },
             },
           },
           {
-            path: ["$.credentialSubject.email"],
-            purpose: "Check if VC contains email field",
+            path: ['$.credentialSubject.email'],
+            purpose: 'Check if VC contains email field',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
           {
-            path: ["$.issuer"],
-            purpose: "Check if VC Issuer is Trusted",
+            path: ['$.issuer'],
+            purpose: 'Check if VC Issuer is Trusted',
             filter: {
-              type: "string",
+              type: 'string',
               pattern:
-                "^did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N|^did:elem:EiBb5gyC1mu3t31oYwMsYWg1U2HyNtaVQ0NKn5UkAzB8BQ",
+                '^did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N|^did:elem:EiBb5gyC1mu3t31oYwMsYWg1U2HyNtaVQ0NKn5UkAzB8BQ',
             },
           },
         ],
       },
     },
     {
-      id: "mobile_vc",
-      name: "mobile VC",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'mobile_vc',
+      name: 'mobile VC',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITPhoneNumber",
+                type: 'string',
+                pattern: 'HITPhoneNumber',
               },
             },
           },
           {
-            path: ["$.credentialSubject.phoneNumber"],
-            purpose: "phone Number",
+            path: ['$.credentialSubject.phoneNumber'],
+            purpose: 'phone Number',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
         ],
       },
     },
     {
-      id: "givenname_vc",
-      name: "givenname VC",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'givenname_vc',
+      name: 'givenname VC',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITGivenName",
+                type: 'string',
+                pattern: 'HITGivenName',
               },
             },
           },
           {
-            path: ["$.credentialSubject.givenName"],
-            purpose: "given Name",
+            path: ['$.credentialSubject.givenName'],
+            purpose: 'given Name',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
         ],
       },
     },
     {
-      id: "familyName",
-      name: "familyName VC",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'familyName',
+      name: 'familyName VC',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITFamilyName",
+                type: 'string',
+                pattern: 'HITFamilyName',
               },
             },
           },
           {
-            path: ["$.credentialSubject.familyName"],
-            purpose: "family Name",
+            path: ['$.credentialSubject.familyName'],
+            purpose: 'family Name',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
         ],
       },
     },
     {
-      id: "middleName",
-      name: "middleName VC",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'middleName',
+      name: 'middleName VC',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITMiddleName",
+                type: 'string',
+                pattern: 'HITMiddleName',
               },
             },
           },
           {
-            path: ["$.credentialSubject.middleName"],
-            purpose: "middleName",
+            path: ['$.credentialSubject.middleName'],
+            purpose: 'middleName',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
         ],
       },
     },
     {
-      id: "nickname",
-      name: "nickname",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'nickname',
+      name: 'nickname',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITNickname",
+                type: 'string',
+                pattern: 'HITNickname',
               },
             },
           },
           {
-            path: ["$.credentialSubject.nickname"],
-            purpose: "nickname",
+            path: ['$.credentialSubject.nickname'],
+            purpose: 'nickname',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
         ],
       },
     },
     {
-      id: "birthdate",
-      name: "birthdate",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'birthdate',
+      name: 'birthdate',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITBirthdate",
+                type: 'string',
+                pattern: 'HITBirthdate',
               },
             },
           },
           {
-            path: ["$.credentialSubject.birthdate"],
-            purpose: "birthdate",
+            path: ['$.credentialSubject.birthdate'],
+            purpose: 'birthdate',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
         ],
       },
     },
     {
-      id: "gender",
-      name: "gender",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'gender',
+      name: 'gender',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITGender",
+                type: 'string',
+                pattern: 'HITGender',
               },
             },
           },
           {
-            path: ["$.credentialSubject.gender"],
-            purpose: "gender",
+            path: ['$.credentialSubject.gender'],
+            purpose: 'gender',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
         ],
       },
     },
     {
-      id: "picture",
-      name: "picture",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'picture',
+      name: 'picture',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITPicture",
+                type: 'string',
+                pattern: 'HITPicture',
               },
             },
           },
           {
-            path: ["$.credentialSubject.picture"],
-            purpose: "picture",
+            path: ['$.credentialSubject.picture'],
+            purpose: 'picture',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
         ],
       },
     },
     {
-      id: "address",
-      name: "address",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'address',
+      name: 'address',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "HITAddress",
+                type: 'string',
+                pattern: 'HITAddress',
               },
             },
           },
           {
-            path: ["$.credentialSubject.formatted"],
+            path: ['$.credentialSubject.formatted'],
           },
           {
-            path: ["$.credentialSubject.locality"],
+            path: ['$.credentialSubject.locality'],
           },
           {
-            path: ["$.credentialSubject.postalCode"],
+            path: ['$.credentialSubject.postalCode'],
           },
           {
-            path: ["$.credentialSubject.country"],
+            path: ['$.credentialSubject.country'],
           },
         ],
       },
     },
   ],
-};
+}
 
 const emailAndProfileVC = {
-  id: "vp_combined_email_user_profile_combined",
+  id: 'vp_combined_email_user_profile_combined',
   submission_requirements: [
     {
-      rule: "pick",
+      rule: 'pick',
       min: 1,
-      from: "A",
+      from: 'A',
     },
   ],
   input_descriptors: [
     {
-      id: "email_vc",
-      name: "Email VC",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'email_vc',
+      name: 'Email VC',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "Email",
+                type: 'string',
+                pattern: 'Email',
               },
             },
           },
           {
-            path: ["$.credentialSubject.email"],
-            purpose: "Check if VC contains email field",
+            path: ['$.credentialSubject.email'],
+            purpose: 'Check if VC contains email field',
             filter: {
-              type: "string",
+              type: 'string',
             },
           },
           {
-            path: ["$.issuer"],
-            purpose: "Check if VC Issuer is Trusted",
+            path: ['$.issuer'],
+            purpose: 'Check if VC Issuer is Trusted',
             filter: {
-              type: "string",
+              type: 'string',
               pattern:
-                "^did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N|^did:elem:EiBb5gyC1mu3t31oYwMsYWg1U2HyNtaVQ0NKn5UkAzB8BQ",
+                '^did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N|^did:elem:EiBb5gyC1mu3t31oYwMsYWg1U2HyNtaVQ0NKn5UkAzB8BQ',
             },
           },
         ],
       },
     },
     {
-      id: "profile_vc",
-      name: "profile VC",
-      purpose: "Check if VC data contains necessary fields",
-      group: ["A"],
+      id: 'profile_vc',
+      name: 'profile VC',
+      purpose: 'Check if VC data contains necessary fields',
+      group: ['A'],
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "UserProfile",
+                type: 'string',
+                pattern: 'UserProfile',
               },
             },
           },
@@ -419,37 +419,37 @@ const emailAndProfileVC = {
       },
     },
   ],
-};
+}
 
 const moviePreference = {
-  id: "vp_token_with_movie_vc",
+  id: 'vp_token_with_movie_vc',
   input_descriptors: [
     {
-      id: "movie_vc",
-      name: "movie VC type",
-      purpose: "Check if VC type is correct",
+      id: 'movie_vc',
+      name: 'movie VC type',
+      purpose: 'Check if VC type is correct',
       constraints: {
         fields: [
           {
-            path: ["$.type"],
-            purpose: "Check if VC type is correct",
+            path: ['$.type'],
+            purpose: 'Check if VC type is correct',
             filter: {
-              type: "array",
+              type: 'array',
               contains: {
-                type: "string",
-                pattern: "MoviePreferences",
+                type: 'string',
+                pattern: 'MoviePreferences',
               },
             },
-          }
+          },
         ],
       },
-    }
+    },
   ],
-};
+}
 
 export const presentationDefinitions = {
   emailVc,
   emailAndProfileVC,
   moviePreference,
   emailAndHITProfileVC,
-} as const;
+} as const
