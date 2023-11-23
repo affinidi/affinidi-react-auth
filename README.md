@@ -174,9 +174,9 @@ const { affinidiProvider } = require('@affinidi/passport-affinidi')
 ```
 await affinidiProvider(app, {
     id: "affinidi",
-    issuer: process.env.AFFINIDI_ISSUER,
-    client_id: process.env.AFFINIDI_CLIENT_ID,
-    client_secret: process.env.AFFINIDI_CLIENT_SECRET,
+    issuer: process.env.PROVIDER_ISSUER,
+    client_id: process.env.PROVIDER_CLIENT_ID,
+    client_secret: process.env.PROVIDER_CLIENT_SECRET,
     redirect_uris: ['http://localhost:3000/auth/callback']
 });
 ```
@@ -220,15 +220,15 @@ You can find a sample index.js file [here](https://github.com/affinidi/affinidi-
     
 5. Create a `.env` file in the `server-app` folder and add your Affinidi configuration obtained from previous step:
 ```
-AFFINIDI_CLIENT_ID="<CLIENT_ID>"
-AFFINIDI_CLIENT_SECRET="<CLIENT_SECRET>"
-AFFINIDI_ISSUER="<ISSUER>"
+PROVIDER_CLIENT_ID="<CLIENT_ID>"
+PROVIDER_CLIENT_SECRET="<CLIENT_SECRET>"
+PROVIDER_ISSUER="<ISSUER>"
 ``` 
 Sample `.env` file displayed below after respective values of the `CLIENT_ID`, `CLIENT_SECRET` and `ISSUER`
 ```
-AFFINIDI_CLIENT_ID="13456678c-67ac-429a-b0d3-5c64ec4c0577"
-AFFINIDI_CLIENT_SECRET="AbcdeF-odZtJ9tc3oLuWVW.ECE_"
-AFFINIDI_ISSUER="https://apse1.api.affinidi.io/vpa/v1/login/project/d085c5a5-5765-4d8f-b00e-398f0916a161"
+PROVIDER_CLIENT_ID="13456678c-67ac-429a-b0d3-5c64ec4c0577"
+PROVIDER_CLIENT_SECRET="AbcdeF-odZtJ9tc3oLuWVW.ECE_"
+PROVIDER_ISSUER="https://apse1.api.affinidi.io/vpa/v1/login/project/d085c5a5-5765-4d8f-b00e-398f0916a161"
 ```
 6. Restart your server using `npm start`.
 

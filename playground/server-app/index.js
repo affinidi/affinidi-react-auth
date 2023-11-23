@@ -16,9 +16,9 @@ const initializeServer = async () => {
 
     await affinidiProvider(app, {
         id: "affinidi",
-        issuer: process.env.AFFINIDI_ISSUER,
-        client_id: process.env.AFFINIDI_CLIENT_ID,
-        client_secret: process.env.AFFINIDI_CLIENT_SECRET,
+        issuer: process.env.PROVIDER_ISSUER,
+        client_id: process.env.PROVIDER_CLIENT_ID,
+        client_secret: process.env.PROVIDER_CLIENT_SECRET,
         redirect_uris: ['http://localhost:3000/auth/callback']
     });
     
