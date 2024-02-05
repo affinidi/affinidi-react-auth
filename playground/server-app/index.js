@@ -14,6 +14,8 @@ const initializeServer = async () => {
         res.json({ success: 'Express' });
     });
 
+    app.set('trust proxy', 1);
+
     await affinidiProvider(app, {
         id: "affinidi",
         issuer: process.env.PROVIDER_ISSUER,
