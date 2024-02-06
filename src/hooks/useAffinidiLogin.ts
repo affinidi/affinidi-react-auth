@@ -10,7 +10,8 @@ const useAffinidiLogin = ({ authInitUrl = '/api/affinidi-auth/init' } = {}) => {
         method: 'get',
         headers: {
           'Content-Type': 'application/json',
-        },
+        },        
+        credentials: "include",
       })
 
       const data = await res.json()
