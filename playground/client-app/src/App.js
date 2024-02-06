@@ -4,9 +4,11 @@ import React from "react";
 
 import { AffinidiLoginButton, useAffinidiProfile } from '@affinidi/affinidi-react-auth'
 
+const apiBaseUrl = process.env.REACT_APP_SERVER_URI || '';
+
 function App() {
   const { isLoading, error, profile, handleLogout } = useAffinidiProfile({
-     authCompleteUrl: '/api/affinidi-auth/complete'
+     authCompleteUrl: `${apiBaseUrl}/api/affinidi-auth/complete`
   })
 
   async function logout() {
@@ -20,7 +22,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         {!profile && <>
-          <AffinidiLoginButton />
+          <AffinidiLoginButton authInitUrl={`${apiBaseUrl}/api/affinidi-auth/init`} />
         </>}
 
         {isLoading && <p>Loading...</p>}
