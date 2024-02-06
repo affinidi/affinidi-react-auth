@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors');
 require('dotenv').config()
 const { affinidiProvider } = require('@affinidi/passport-affinidi')
 
@@ -14,6 +15,7 @@ const initializeServer = async () => {
         res.json({ success: 'Express' });
     });
 
+    app.use(cors({ credentials: true, origin: true }));
     app.set('trust proxy', 1);
 
     await affinidiProvider(app, {
@@ -23,7 +25,7 @@ const initializeServer = async () => {
         client_secret: process.env.PROVIDER_CLIENT_SECRET,
         redirect_uris: ['http://localhost:3000/auth/callback']
     });
-    
+
     app.listen(PORT, () => {
         console.log(`Server listening on ${PORT}`);
     });
