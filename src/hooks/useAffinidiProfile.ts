@@ -50,7 +50,7 @@ const useAffinidiProfile = ({ redirectTo = '/', authCompleteUrl = '/api/affinidi
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: "include",
+        credentials: 'include',
         body: JSON.stringify(params),
       })
 
