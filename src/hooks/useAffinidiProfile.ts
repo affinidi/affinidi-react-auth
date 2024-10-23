@@ -3,6 +3,7 @@ import { errorDescriptionMessageMap, errorMessageMap } from '../types'
 const storageKey = 'affinidi-login'
 
 const getStorgageData = () => {
+  if (typeof window === 'undefined') return {}
   const data = window.localStorage.getItem(storageKey)
   return data ? JSON.parse(data) : undefined
 }
