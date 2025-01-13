@@ -15,7 +15,8 @@
     "clean": "rm -rf ./dist",
     "build": "npm run clean && tsc",
     "watch": "tsc -w",
-    "lint": "eslint .",
+    "lint": "eslint . --debug",
+    "test1": "eslint --print-config playground/client-app/src/App.js > test.json",
     "lint:fix": "eslint . --fix"
   },
   "repository": {

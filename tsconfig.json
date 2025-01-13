@@ -17,5 +17,10 @@
     "outDir": "dist",
     "lib": ["es2020", "dom"],
     "jsx": "react"
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist", "playground"],
+  "ts-node": {
+    "esm": true
   }
 }
